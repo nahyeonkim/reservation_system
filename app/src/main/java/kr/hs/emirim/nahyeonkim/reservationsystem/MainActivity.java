@@ -1,8 +1,7 @@
 package kr.hs.emirim.nahyeonkim.reservationsystem;
 
-import android.provider.MediaStore;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CalendarView;
@@ -10,8 +9,6 @@ import android.widget.Chronometer;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.TimePicker;
-
-import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
     Chronometer chrono;
@@ -30,11 +27,26 @@ public class MainActivity extends AppCompatActivity {
         butStart=(Button)findViewById(R.id.but_start);
         butDone=(Button)findViewById(R.id.but_done);
         radioDate=(RadioButton)findViewById(R.id.radio_date);
-        radioDate=(RadioButton)findViewById(R.id.radio_time);
+        radioTime=(RadioButton)findViewById(R.id.radio_time);
         calView=(CalendarView)findViewById(R.id.calendar);
         timePick=(TimePicker)findViewById(R.id.time_pick);
         textResult=(TextView)findViewById(R.id.text_result);
         timePick.setVisibility(View.INVISIBLE);
         calView.setVisibility(View.INVISIBLE);
+
+        radioDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                calView.setVisibility(View.VISIBLE);
+                timePick.setVisibility(View.INVISIBLE);
+            }
+        });
+        radioTime.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v){
+                timePick.setVisibility(View.VISIBLE);
+                calView.setVisibility(View.INVISIBLE);
+            }
+        });
     }
 }
